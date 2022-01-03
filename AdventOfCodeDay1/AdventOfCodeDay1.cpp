@@ -13,7 +13,7 @@ int main()
     inputFile.open("puzzle_input.txt", ios::in);
     if (inputFile.is_open()) {
         std:string inputString;
-        getline(inputFile, inputString);
+        getline(inputFile,inputString);
         int previousValue = stoi(inputString);
         while (getline(inputFile, inputString)) {
             int currentValue = stoi(inputString);
