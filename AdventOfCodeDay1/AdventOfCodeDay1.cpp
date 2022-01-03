@@ -11,20 +11,30 @@ int main()
     int timesIncreased = 0;
     ifstream inputFile;
     inputFile.open("puzzle_input.txt", ios::in);
+    std:string inputString;
     if (inputFile.is_open()) {
-        std:string inputString;
         getline(inputFile,inputString);
-        int previousValue = stoi(inputString);
+        int previousValue1 = stoi(inputString);
+        getline(inputFile, inputString);
+        int previousValue2 = stoi(inputString);
+        getline(inputFile, inputString);
+        int previouseValue3 = stoi(inputString);
+        int previousSum = previousValue1 + previousValue2 + previouseValue3;
         while (getline(inputFile, inputString)) {
             int currentValue = stoi(inputString);
-            if (currentValue > previousValue) {
+            int currentSum = currentValue + previouseValue3 + previousValue2;
+            if (currentSum > previousSum) {
                 timesIncreased++;
             }
-            previousValue = currentValue;
+            previousValue2 = previouseValue3;
+            previouseValue3 = currentValue;
+            previousSum = currentSum;
         }
     }
     inputFile.close();
-    cout << "Times Increased: " << timesIncreased << endl;    
+    cout << "Times Increased: " << timesIncreased << endl;
+    cout << "Press enter 'e' to exit" << endl;
+    cin >> inputString;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
